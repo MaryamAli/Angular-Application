@@ -11,6 +11,18 @@ var config = function config($stateProvider, $urlRouterProvider) {
   $stateProvider.state('root', {
     abstract: true,
     templateUrl: 'templates/layout.tpl.html'
+  }).state('root.add', {
+    url: '/add',
+    controller: 'AddController',
+    templateUrl: 'templates/add.tpl.html'
+  }).state('root.list', {
+    url: '/',
+    controller: 'ListController',
+    templateUrl: 'templates/list.tpl.html'
+  }).state('root.single', {
+    url: '/single/:bookId',
+    controller: 'SingleController',
+    templateUrl: 'templates/single.tpl.html'
   });
 };
 
@@ -24,9 +36,38 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+var AddController = function AddController($scope, $http, PARSE) {
+
+  var url = PARSE.URL + 'classes/book';
+  var Book = function Book(obj) {
+    this.name = obj.name;
+    this.author = obj.author;
+    this.notes = obj.notes;
+  };
+
+  $scope.addBook = function (obj) {
+    var b = new Book(obj);
+
+    $http.post(url, b, PARSE.CONFIG).then(function (res) {
+      $scope.book = {};
+    });
+  };
+};
+
+AddController.$inject = ['$scope', '$http', 'PARSE'];
+
+exports['default'] = AddController;
+module.exports = exports['default'];
+
+},{}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 var ListController = function ListController($scope, $http, PARSE) {
 
-  var url = PARSE.URL + 'classes/books';
+  var url = PARSE.URL + 'classes/book';
 
   $http.get(url, PARSE.CONFIG).then(function (res) {
 
@@ -39,7 +80,26 @@ ListController.$inject = ['$scope', '$http', 'PARSE'];
 exports['default'] = ListController;
 module.exports = exports['default'];
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var SingleController = function SingleController($scope, $stateParams, $http, PARSE) {
+  var url = PARSE.URL + 'classes/book/' + $stateParams.bookId;
+
+  $http.get(url, PARSE.CONFIG).then(function (res) {
+    $scope.singleBook = res.data;
+  });
+};
+
+SingleController.$inject = ['$scope', '$stateParams', '$http', 'PARSE'];
+
+exports['default'] = SingleController;
+module.exports = exports['default'];
+
+},{}],5:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -58,11 +118,25 @@ var _controllersListController = require('./controllers/list.controller');
 
 var _controllersListController2 = _interopRequireDefault(_controllersListController);
 
-console.log('Hello, World');
+var _controllersAddController = require('./controllers/add.controller');
 
-_angular2['default'].module('app', ['ui.router']).config(_config2['default']);
+var _controllersAddController2 = _interopRequireDefault(_controllersAddController);
 
-},{"./config":1,"./controllers/list.controller":2,"angular":6,"angular-ui-router":4}],4:[function(require,module,exports){
+var _controllersSingleController = require('./controllers/single.controller');
+
+var _controllersSingleController2 = _interopRequireDefault(_controllersSingleController);
+
+_angular2['default'].module('app', ['ui.router']).constant('PARSE', {
+  URL: 'https://api.parse.com/1/',
+  CONFIG: {
+    headers: {
+      'X-Parse-Application-Id': 'BEiMkzBDX2b2c8gWI3HLh3XLpMxC5gE6JEctldvx',
+      'X-Parse-REST-API-Key': 'sv0xgwXCZKf8x7EtTKJ0vYNwYC1c7d3Oyls2tTvU'
+    }
+  }
+}).config(_config2['default']).controller('AddController', _controllersAddController2['default']).controller('ListController', _controllersListController2['default']).controller('SingleController', _controllersSingleController2['default']);
+
+},{"./config":1,"./controllers/add.controller":2,"./controllers/list.controller":3,"./controllers/single.controller":4,"angular":8,"angular-ui-router":6}],6:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4433,7 +4507,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33338,11 +33412,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":5}]},{},[3])
+},{"./angular":7}]},{},[5])
 
 
 //# sourceMappingURL=main.js.map
