@@ -1,10 +1,14 @@
 <h2>Add books</h2>
 
 <form class="submitForm" ng-submit='addBook(book)'>
-  <input placeholder="Title" ng-model='book.name'>
-  <input placeholder="Author" ng-model='book.author'>
-  <input placeholder="Notes/Review" ng-model='book.notes'>
-  <input placeholder="Jacket Picture" ng-model='book.imageUrl'>
+  Title:
+  <input ng-model='book.name'>
+  Author:
+  <input ng-model='book.author'>
+  Notes/Review:
+  <input ng-model='book.notes' class="formNotes">
+  Jacket Picture:
+  <input ng-model='book.imageUrl'>
   <button>Add Book</button>
 </form>
 
