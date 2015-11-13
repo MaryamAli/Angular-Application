@@ -1,8 +1,5 @@
 ## Welcome to My Project
 
-https://github.com/itawtitawapuddytat/Angular-Application/app/Images/BookLogo.png
-
-
 Welcome to AnguBook, a service to help you track your reading hobby.
 
 This is a CRUD application built with AngularJS.
