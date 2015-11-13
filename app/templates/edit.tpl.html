@@ -1,9 +1,9 @@
 <h3>Edit This Entry</h3>
 
 <form ng-submit="updateBook(singleBook)">
-  <input placeholder="Title" ng-model="singleBook.name">
-  <input placeholder="Author" ng-model="singleBook.author">
-  <input placeholder="Notes/Review" ng-model="singleBook.notes">
-  <input placeholder="Jacket Photo" ng-model="singleBook.imageUrl">
+  <input ng-model="singleBook.name">
+  <input ng-model="singleBook.author">
+  <textarea ng-model= "singleBook.notes" class="formNotes"></textarea>
+  <input  ng-model="singleBook.imageUrl">
   <button>Done!</button>
 </form>

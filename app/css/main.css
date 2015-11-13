@@ -6439,7 +6439,8 @@ button, .button {
   background-color: #3B00D9;
   border: 1px solid #9F75EE;
   border-radius: 90px;
-  width: 75%; }
+  width: 75%;
+  text-decoration: none; }
   button a, .button a {
     color: white; }
   button:hover, .button:hover {
@@ -6463,7 +6464,7 @@ ul, menu, dir {
 img.logo {
   margin-top: 45px; }
 
-input.formNotes {
+.formNotes {
   height: 200px; }
 
 /*# sourceMappingURL=main.css.map */
