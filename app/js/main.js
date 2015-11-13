@@ -23,6 +23,10 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/single/:bookId',
     controller: 'SingleController',
     templateUrl: 'templates/single.tpl.html'
+  }).state('root.edit', {
+    url: '/edit/:bookId',
+    controller: 'EditController',
+    templateUrl: 'templates/edit.tpl.html'
   });
 };
 
@@ -36,22 +40,45 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddController = function AddController($scope, BookService) {
+var AddController = function AddController($scope, BookService, $state) {
 
   $scope.addBook = function (obj) {
 
     BookService.addBook(obj).then(function (res) {
       $scope.book = {};
+      $state.go('root.list');
     });
   };
 };
 
-AddController.$inject = ['$scope', 'BookService'];
+AddController.$inject = ['$scope', 'BookService', '$state'];
 
 exports['default'] = AddController;
 module.exports = exports['default'];
 
 },{}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var EditController = function EditController($scope, $stateParams, BookService, $state) {
+  BookService.getBook($stateParams.bookId).then(function (res) {
+    $scope.singleBook = res.data;
+  });
+
+  $scope.updateBook = function (obj) {
+    BookService.update(obj).then(function (res) {
+      $state.go('root.list');
+    });
+  };
+};
+
+EditController.$inject = ['$scope', '$stateParams', 'BookService', '$state'];
+exports['default'] = EditController;
+module.exports = exports['default'];
+
+},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -69,25 +96,30 @@ ListController.$inject = ['$scope', 'BookService'];
 exports['default'] = ListController;
 module.exports = exports['default'];
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var SingleController = function SingleController($scope, $stateParams, BookService) {
+var SingleController = function SingleController($scope, $stateParams, BookService, $state) {
 
   BookService.getBook($stateParams.bookId).then(function (res) {
     $scope.singleBook = res.data;
   });
+  $scope.deleteMe = function (obj) {
+    BookService['delete'](obj).then(function (res) {
+      $state.go('root.list');
+    });
+  };
 };
 
-SingleController.$inject = ['$scope', '$stateParams', 'BookService'];
+SingleController.$inject = ['$scope', '$stateParams', 'BookService', '$state'];
 
 exports['default'] = SingleController;
 module.exports = exports['default'];
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -118,6 +150,10 @@ var _servicesBookService = require('./services/book.service');
 
 var _servicesBookService2 = _interopRequireDefault(_servicesBookService);
 
+var _controllersEditController = require('./controllers/edit.controller');
+
+var _controllersEditController2 = _interopRequireDefault(_controllersEditController);
+
 _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
   URL: 'https://api.parse.com/1/',
   CONFIG: {
@@ -126,9 +162,9 @@ _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
       'X-Parse-REST-API-Key': 'sv0xgwXCZKf8x7EtTKJ0vYNwYC1c7d3Oyls2tTvU'
     }
   }
-}).config(_config2['default']).controller('AddController', _controllersAddController2['default']).controller('ListController', _controllersListController2['default']).controller('SingleController', _controllersSingleController2['default']).service('BookService', _servicesBookService2['default']);
+}).config(_config2['default']).controller('AddController', _controllersAddController2['default']).controller('ListController', _controllersListController2['default']).controller('SingleController', _controllersSingleController2['default']).service('BookService', _servicesBookService2['default']).controller('EditController', _controllersEditController2['default']);
 
-},{"./config":1,"./controllers/add.controller":2,"./controllers/list.controller":3,"./controllers/single.controller":4,"./services/book.service":6,"angular":9,"angular-ui-router":7}],6:[function(require,module,exports){
+},{"./config":1,"./controllers/add.controller":2,"./controllers/edit.controller":3,"./controllers/list.controller":4,"./controllers/single.controller":5,"./services/book.service":7,"angular":10,"angular-ui-router":8}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -142,20 +178,20 @@ var BookService = function BookService($http, PARSE) {
     return $http({
       url: url,
       headers: PARSE.CONFIG.headers,
-      method: 'GET',
-      cache: true
+      method: 'GET'
     });
   };
 
+  // cache: true
   this.getBook = function (bookId) {
     return $http({
       method: 'GET',
       url: url + '/' + bookId,
-      headers: PARSE.CONFIG.headers,
-      cache: true
+      headers: PARSE.CONFIG.headers
     });
   };
 
+  // cache: true
   var Book = function Book(obj) {
     this.name = obj.name;
     this.author = obj.author;
@@ -167,6 +203,13 @@ var BookService = function BookService($http, PARSE) {
     var b = new Book(obj);
     return $http.post(url, b, PARSE.CONFIG);
   };
+  this['delete'] = function (obj) {
+    return $http['delete'](url + '/' + obj.objectId, PARSE.CONFIG);
+  };
+
+  this.update = function (obj) {
+    return $http.put(url + '/' + obj.objectId, obj, PARSE.CONFIG);
+  };
 };
 
 BookService.$inject = ['$http', 'PARSE'];
@@ -174,7 +217,7 @@ BookService.$inject = ['$http', 'PARSE'];
 exports['default'] = BookService;
 module.exports = exports['default'];
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4545,7 +4588,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33450,11 +33493,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":8}]},{},[5])
+},{"./angular":9}]},{},[6])
 
 
 //# sourceMappingURL=main.js.map

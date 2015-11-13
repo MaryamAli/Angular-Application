@@ -2,4 +2,7 @@
 
 <p>By {{ singleBook.author }} <hr></p>
 <p>{{ singleBook.notes }}</p>
-<p><img ng-src="{{ singleBook.imageUrl }}"></p>
+<a href="#/edit/{{ singleBook.objectId }}">Edit This Entry</a>
+<a href="#" ng-click="deleteMe(singleBook)">Delete This Entry</a>
+
+<p><img class= "jacket" ng-src="{{ singleBook.imageUrl }}"></p>

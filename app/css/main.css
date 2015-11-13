@@ -6390,6 +6390,9 @@ th.hide-for-touch {
 body {
   background: #E5E4E2; }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; }
+
 .lefthand {
   max-width: 300px;
   margin: 0;

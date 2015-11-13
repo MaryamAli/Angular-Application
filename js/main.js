@@ -5,6 +5,7 @@ import ListController from './controllers/list.controller';
 import AddController from './controllers/add.controller';
 import SingleController from './controllers/single.controller';
 import BookService from './services/book.service';
+import EditController from './controllers/edit.controller';
 
 
 angular
@@ -23,4 +24,5 @@ angular
 .controller('ListController', ListController)
 .controller('SingleController', SingleController)
 .service('BookService', BookService)
+.controller('EditController', EditController)
 ;

@@ -7,7 +7,7 @@ let BookService = function ($http, PARSE) {
       url: url, 
       headers: PARSE.CONFIG.headers,
       method: 'GET',         
-      cache: true
+      // cache: true
     });
   };
 
@@ -16,7 +16,7 @@ let BookService = function ($http, PARSE) {
       method: 'GET',
       url: url + '/' + bookId,        
       headers: PARSE.CONFIG.headers,
-      cache: true
+      // cache: true
     });
   };
 
@@ -31,7 +31,13 @@ let BookService = function ($http, PARSE) {
     let b = new Book (obj);
     return $http.post(url, b, PARSE.CONFIG);
   };
+  this.delete = function (obj) {
+    return $http.delete(url +'/' +obj.objectId, PARSE.CONFIG);
+  };
     
+  this.update = function (obj) {
+    return $http.put(url + '/' + obj.objectId, obj, PARSE.CONFIG);
+  };
 };
 
 BookService.$inject = ['$http', 'PARSE'];
