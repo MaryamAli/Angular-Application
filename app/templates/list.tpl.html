@@ -2,6 +2,9 @@
 
 <ul>
     <li ng-repeat = "book in books">
-      <a class="bookTitles" href="#/single/{{book.objectId}}"> {{ book.name }} by {{ book.author }}</a>
+      <a class="bookTitles" href="#/single/{{book.objectId}}"> {{ book.name }} by {{ book.author }}
+     <!--  <img ng-src="{{ book.imageUrl }}"> -->
+      </a>
+
     </li>
 </ul>

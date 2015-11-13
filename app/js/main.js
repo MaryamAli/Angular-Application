@@ -160,7 +160,7 @@ var BookService = function BookService($http, PARSE) {
     this.name = obj.name;
     this.author = obj.author;
     this.notes = obj.notes;
-    this.jacket = obj.jacket;
+    this.imageUrl = obj.imageUrl;
   };
 
   this.addBook = function (obj) {
