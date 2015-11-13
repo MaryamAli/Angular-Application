@@ -1,13 +1,10 @@
-let ListController = function ($scope, $http, PARSE) {
+let ListController = function ($scope, BookService) {
   
-  let url = PARSE.URL + 'classes/book';
-
-  $http.get(url, PARSE.CONFIG).then( (res) => {
-
+  BookService.getBooks().then ( (res) => {
     $scope.books = res.data.results;
   });
-};
+};  
 
-ListController.$inject = ['$scope', '$http', 'PARSE'];
+ListController.$inject = ['$scope', 'BookService'];
 
 export default ListController;

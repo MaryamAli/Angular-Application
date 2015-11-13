@@ -1,21 +1,13 @@
-let AddController = function ($scope, $http, PARSE) {
-
-  let url = PARSE.URL + 'classes/book';
-  let Book = function (obj) {
-    this.name = obj.name;
-    this.author = obj.author;
-    this.notes = obj.notes;
-  };
+let AddController = function ($scope, BookService) {
 
   $scope.addBook = (obj) => {
-    let b = new Book (obj);
 
-    $http.post(url, b, PARSE.CONFIG).then( (res) => {
+    BookService.addBook(obj).then( (res) => {
       $scope.book = {};
     });
   };
 };
 
-AddController.$inject = ['$scope', '$http', 'PARSE'];
+AddController.$inject = ['$scope', 'BookService'];
 
 export default AddController;

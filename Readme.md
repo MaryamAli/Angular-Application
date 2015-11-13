@@ -1,6 +1,7 @@
 ## Welcome to My Project
 
-> I am your Readme.md file, you should probably update me.
+Welcome to AnguBooks, a service to keep help you track your reading hobby.
+
 logo from New Email graphic by <a href="http://www.coucouicons.com">Coucou</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a>
 
 
@@ -17,25 +18,18 @@ logo from New Email graphic by <a href="http://www.coucouicons.com">Coucou</a> f
 
 ## Assets Setup and ready for use
 
-- [Bourbon](http://bourbon.io/)
-- [Neat](http://neat.bourbon.io/)
 - [Font Awesome](https://fortawesome.github.io/Font-Awesome/)
 - [Foundation 5](http://foundation.zurb.com/)
 
 #### How to use them?
 
-At the top of your `main.scss` file, just import any of the following:
+At the top of your `main.scss` file, just import following:
 
-```scss
-@import "bourbon";
-@import "neat";
 
 @import "foundation";
 
 @import "font-awesome";
-```
 
-> Note: You probably don't want to use BOTH Bourbon/Neat & Foundation. Just pick one.
 
 ## NPM Tools Used
 

@@ -1,11 +1,65 @@
 @import "foundation";
 
 body {
-  background: #e2ebf3;
+  background: #E5E4E2; 
+}
+
+.lefthand {
+  max-width: 300px;
+  margin: 0;
+  display: inline-block;
+  vertical-align: left;
+}
+
+
+p {
+  font-family: 'IM Fell Double Pica', serif;
+}
+
+.top-bar {
+  background-color: #737373;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button){
+  background-color: #737373;
+}
+
+.top-bar-section ul li > a {
+  font-family: 'IM Fell Double Pica', serif;
+  font-size: 15px;
 }
 
 .container {
-  width: 500px;
-  margin: 20px auto;
+  width: 400px;
+  margin-left: 20px;
+  display: inline-block;
 
 }
+
+.bookTitles {
+  text-decoration: none;
+}
+
+a, h3 {
+  color: #3B00D9;
+}
+
+h2, h3 {
+  font-family: 'IM Fell Double Pica', serif;
+}
+
+.submitForm {
+  font-family: 'IM Fell Double Pica', serif;
+
+}
+
+button, .button {
+  font-family: 'IM Fell Double Pica', serif;
+  background-color: #3B00D9;
+  border: 1px solid #9F75EE;
+  border-radius: 90px;
+  &:hover {
+    background: #D3221B;
+  }
+}
+
