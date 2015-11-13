@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Graduate);
 meta.foundation-version {
   font-family: "/5.5.3/"; }
 
@@ -6399,42 +6400,67 @@ body {
   display: inline-block;
   vertical-align: left; }
 
-p {
-  font-family: 'IM Fell Double Pica', serif; }
+.name span a {
+  text-align: center; }
 
 .top-bar {
-  background-color: #737373; }
+  background-color: #3B00D9;
+  font-family: 'Graduate'; }
 
 .top-bar-section li:not(.has-form) a:not(.button) {
-  background-color: #737373; }
+  background-color: #3B00D9; }
 
 .top-bar-section ul li > a {
-  font-family: 'IM Fell Double Pica', serif;
+  font-family: 'Graduate';
   font-size: 15px; }
 
 .container {
   width: 400px;
-  margin-left: 20px;
-  display: inline-block; }
+  margin-right: 80px;
+  margin-top: 40px;
+  display: inline-block;
+  font-family: 'IM Fell Double Pica', serif;
+  float: right; }
 
 .bookTitles {
   text-decoration: none; }
 
-a, h3 {
+a, h3, h2 {
   color: #3B00D9; }
 
 h2, h3 {
-  font-family: 'IM Fell Double Pica', serif; }
+  font-family: 'Graduate'; }
 
 .submitForm {
   font-family: 'IM Fell Double Pica', serif; }
 
 button, .button {
-  font-family: 'IM Fell Double Pica', serif;
+  font-family: 'Graduate';
   background-color: #3B00D9;
   border: 1px solid #9F75EE;
-  border-radius: 90px; }
+  border-radius: 90px;
+  width: 75%; }
+  button a, .button a {
+    color: white; }
   button:hover, .button:hover {
-    background: #D3221B; }
+    background: #4D52FF; }
+
+a.bookTitles.ng-binding {
+  font-size: 20px;
+  color: #737373; }
+  a.bookTitles.ng-binding:hover {
+    color: #3200E2; }
+
+.top-bar .name h1 a, .top-bar .name h2 a, .top-bar .name h3 a, .top-bar .name h4 a, .top-bar .name p a, .top-bar .name span a {
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  padding-left: 425px; }
+
+ul, menu, dir {
+  list-style-type: none; }
+
+img.logo {
+  margin-top: 45px; }
 
 /*# sourceMappingURL=main.css.map */

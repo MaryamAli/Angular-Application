@@ -1,8 +1,10 @@
 <h3>{{ singleBook.name }}</h3>
 
+
 <p>By {{ singleBook.author }} <hr></p>
 <p>{{ singleBook.notes }}</p>
-<a href="#/edit/{{ singleBook.objectId }}">Edit This Entry</a>
-<a href="#" ng-click="deleteMe(singleBook)">Delete This Entry</a>
+<hr>
+<div class="singleViewButton"><button><a href="#/edit/{{ singleBook.objectId }}">Edit This Entry</a></button>
+<button><a href="#" ng-click="deleteMe(singleBook)">Delete This Entry</a></button></div>
 
 <p><img class= "jacket" ng-src="{{ singleBook.imageUrl }}"></p>

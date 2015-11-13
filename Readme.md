@@ -1,6 +1,8 @@
 ## Welcome to My Project
 
-Welcome to AnguBooks, a service to keep help you track your reading hobby.
+Welcome to AnguBook, a service to keep help you track your reading hobby.
+
+This is a CRUD application built with AngularJS.
 
 logo from New Email graphic by <a href="http://www.coucouicons.com">Coucou</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a>
 
@@ -25,6 +27,7 @@ logo from New Email graphic by <a href="http://www.coucouicons.com">Coucou</a> f
 
 At the top of your `main.scss` file, just import following:
 
+@import url(https://fonts.googleapis.com/css?family=Graduate);
 
 @import "foundation";
 

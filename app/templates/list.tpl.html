@@ -1,10 +1,10 @@
-<h2 class="listTemplateTitle">Books Read</h2>
+<h2 class="listTemplateTitle">Books Everyone Should Read,<br> At Least Once</h2>
 
 <ul>
     <li ng-repeat = "book in books">
       <a class="bookTitles" href="#/single/{{book.objectId}}"> {{ book.name }} by {{ book.author }}
      <!--  <img ng-src="{{ book.imageUrl }}"> -->
       </a>
-
+      <hr>
     </li>
 </ul>
