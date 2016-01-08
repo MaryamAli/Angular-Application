@@ -4,6 +4,19 @@ Welcome to AnguBook, a service to help you track your reading hobby.
 
 This is a CRUD application built with AngularJS.
 
+Objectives:
+
+Be able to plan an entire application from start to finish
+Demonstrate a strong foundation in working with AngularJS
+Demonstrate a strong understanding of the parts of AngularJS
+Have at least three controllers
+Have at least three different views (template files)
+Have at least one Factory OR Service
+Use ui.router to navigate through your app
+Use Parse REST API for storing/managing your data
+
+![AnguBook site](https://i.imgur.com/mjGkFUq.png)
+
 Logo from New Email graphic by <a href="http://www.coucouicons.com">Coucou</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a>
 
 
