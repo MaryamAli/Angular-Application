@@ -7,13 +7,21 @@ This is a CRUD application built with AngularJS.
 Objectives:
 
 Be able to plan an entire application from start to finish
+
 Demonstrate a strong foundation in working with AngularJS
+
 Demonstrate a strong understanding of the parts of AngularJS
+
 Have at least three controllers
+
 Have at least three different views (template files)
+
 Have at least one Factory OR Service
+
 Use ui.router to navigate through your app
+
 Use Parse REST API for storing/managing your data
+
 
 ![AnguBook site](https://i.imgur.com/mjGkFUq.png)
 
